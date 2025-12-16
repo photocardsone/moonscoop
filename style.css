@@ -110,3 +110,22 @@ opacity: 1;
     user-select: none;
     pointer-events: none; /* il logo non blocca i click dietro */
 }
+
+.twitch-logo {
+    position: fixed;
+    top: 15px;      /* distanza dall'alto */
+    right: 15px;    /* distanza da destra */
+    z-index: 9999;  /* sempre sopra */
+}
+
+.twitch-logo img {
+    width: 100px;   /* logo medio */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.twitch-logo img:hover {
+    transform: scale(1.1);
+}
+
