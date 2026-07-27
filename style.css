@@ -1,133 +1,191 @@
-body {
-    background-image: linear-gradient(to top right, #336ea5, #1709da);
-    min-height: 100vh;
-    margin: 0;
-    font-family: monospace;
-    display: flex;
-    justify-content: center; /* ← OK */
-    align-items: flex-start; /* ← cambia questo */
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:monospace;
+    background:linear-gradient(to top right,#336ea5,#1709da);
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    overflow-x:hidden;
 }
 
-.slider {
-    position: relative;
-    margin-top: 100px;
-    width: 100%;
-    height: fit-content;   /* altezza dinamica */
-    padding-bottom: 40px;  /* spazio per sicurezza */
-    overflow: visible;     /* evita tagli */
+/* ==========================
+   SLIDER
+========================== */
+
+.slider{
+    position:relative;
+    width:100%;
+    height:650px;
+    margin-top:110px;
+    overflow:visible;
 }
 
- 
-.item {
-    position: absolute;
-    width: 350px;       /* AUMENTATO */
-    height: 520px;      /* AUMENTATO */
-    border-radius: 16px;
-    transition: 0.5s;
-    left: 40%;
-    transform: translateX(-30%);
-    top: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow: hidden;
+/* ==========================
+   PHOTOCARDS
+========================== */
+
+.item{
+    position:absolute;
+    width:350px;
+    height:520px;
+
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+
+    border-radius:18px;
+    overflow:hidden;
+
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:contain;
+
+    transition:0.5s ease;
 }
 
-
-.item::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-bottom: 0;
-background: rgba(0, 0, 0, 0.068);
-z-index: 1;
+.item::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.05);
+    z-index:1;
 }
 
-.content {
-position: relative;
-z-index: 2;
-height: 100%;
-padding: 20px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-color: white;
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+.content{
+    position:relative;
+    z-index:2;
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+    box-sizing:border-box;
+
+    color:#fff;
+    text-shadow:0 2px 5px rgba(0,0,0,.8);
 }
 
-
-
-.content p {
-font-size: 13px;
-line-height: 1.5;
-margin: 0;
-opacity: 0.95;
+.content h1{
+    margin:0;
 }
 
-#next {
-position: absolute;
-right: 50px;
-top: 200%;
+.content p{
+    margin:0;
+    font-size:13px;
+    line-height:1.5;
 }
 
-#prev {
-position: absolute;
-left: 50px;
-top: 200%;
+/* ==========================
+   PULSANTI
+========================== */
+
+#prev,
+#next{
+    position:absolute;
+    top:270px;
+
+    border:none;
+    background:none;
+
+    color:#fff;
+    font-size:56px;
+    font-family:monospace;
+    font-weight:bold;
+
+    cursor:pointer;
+    opacity:.55;
+    transition:.25s;
+
+    z-index:999;
 }
 
-#prev, #next {
-color: #fff;
-background: none;
-border: none;
-font-size: xxx-large;
-font-family: monospace;
-font-weight: bold;
-opacity: 0.5;
-transition: opacity 0.5s;
-cursor: pointer;
-z-index: 10;
+#prev{
+    left:40px;
+}
+
+#next{
+    right:40px;
 }
 
 #prev:hover,
-#next:hover {
-opacity: 1;
+#next:hover{
+    opacity:1;
+    transform:scale(1.15);
 }
 
+/* ==========================
+   LOGO
+========================== */
 
-.logo {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
+.logo{
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:1000;
 }
 
-.logo img {
-    height: 60px; /* Cambia a tuo piacimento */
-    width: auto;
-    user-select: none;
-    pointer-events: none; /* il logo non blocca i click dietro */
+.logo img{
+    height:60px;
+    width:auto;
+    user-select:none;
 }
 
-.twitch-logo {
-    position: fixed;
-    top: 15px;      /* distanza dall'alto */
-    right: 15px;    /* distanza da destra */
-    z-index: 9999;  /* sempre sopra */
+.twitch-logo{
+    position:fixed;
+    top:15px;
+    right:15px;
+    z-index:1000;
 }
 
-.twitch-logo img {
-    width: 100px;   /* logo medio */
-    height: auto;
-    cursor: pointer;
-    transition: transform 0.25s ease;
+.twitch-logo img{
+    width:100px;
+    height:auto;
+    transition:.25s;
 }
 
-.twitch-logo img:hover {
-    transform: scale(1.1);
+.twitch-logo img:hover{
+    transform:scale(1.1);
 }
 
-@media (max-width: 768px) {
-} 
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .slider{
+        height:560px;
+        margin-top:90px;
+    }
+
+    .item{
+        width:270px;
+        height:400px;
+    }
+
+    #prev,
+    #next{
+        font-size:42px;
+        top:210px;
+    }
+
+    #prev{
+        left:10px;
+    }
+
+    #next{
+        right:10px;
+    }
+
+    .logo img{
+        height:45px;
+    }
+
+    .twitch-logo img{
+        width:70px;
+    }
+}
